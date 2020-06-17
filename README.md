@@ -31,3 +31,5 @@
 ### Extra
 
 - [ ] database?
+- [ ] Robinhood stock trading bot
+	- https://github.com/Jake0303/RobinHood-RSI-Trading-Bot

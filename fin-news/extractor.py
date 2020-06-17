@@ -3,21 +3,7 @@ from requests.exceptions import RequestException
 from contextlib import closing
 from bs4 import BeautifulSoup
 
-# Constants
-HEADERS = {
-    'Host': 'www.bloomberg.com',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0',
-    'Accept': '*/*',
-    'Accept-Language': 'de,en-US;q=0.7,en;q=0.3',
-    'Accept-Encoding': 'gzip, deflate, br',
-    'Referer': 'https://www.bloomberg.com/quote/',
-    'DNT': '1',
-    'Connection': 'keep-alive',
-    'TE': 'Trailers'
-}
-URL_ROOT = 'https://www.bloomberg.com/markets2/api/datastrip'
-URL_PARAMS = 'locale=en&customTickerList=true'
-VALID_TYPE = {'currency', 'index'}
+import constants as const
 
 
 def simple_get(url):
@@ -27,7 +13,8 @@ def simple_get(url):
     text content, otherwise return None.
     """
     try:
-        with closing(get(url, stream=True, headers=HEADERS)) as resp:
+        with closing(get(url, stream=True, headers=const.HEADERS)) as resp:
+        # with closing(get(url, stream=True, headers=HEADERS)) as resp:
             if is_good_response(resp) is True:
                 return resp.content
             else:

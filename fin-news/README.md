@@ -5,7 +5,9 @@ To extract raw data from financial news websites.
 
 - [HTML formatter](https://www.freeformatter.com/html-formatter.html)
 
-## Links
+## TODOs
+- [ ] Twitter (longterm; after finish NLP with news)
+    - [ ] Find trustable twitter accounts
 - [x] [Bloomberg](https://www.bloomberg.com)
 - [ ] [Bloomberg Market](https://www.bloomberg.com/markets)
 - [ ] [CNN Business](https://www.cnn.com/business)

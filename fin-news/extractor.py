@@ -3,8 +3,12 @@ from requests.exceptions import RequestException
 from contextlib import closing
 from bs4 import BeautifulSoup
 
+import csv
 import constants as const
 
+# ********************************
+# Web extracting
+# ********************************
 
 def simple_get(url):
     """
@@ -37,5 +41,28 @@ def is_good_response(resp):
 
 def log_error(url, e):
     print('[ERROR] Error during requests to {0}:\n{1}'.format(url, str(e)))
+
+# ********************************
+# Data output
+# ********************************
+
+def write_to_csv(output_path, data, weight, url_prefix=None):
+    with open(output_path, 'w', newline='') as file:
+        w = csv.writer(file, delimiter=',')
+        w.writerow(const.CSV_TITLE)
+        for l in data:
+            title = l.get_text()
+            link = url_prefix + l.attrs["href"]
+            w.writerow([title, weight, link])
+    return
+
+def append_to_csv(output_path, data, weight, url_prefix=None):
+    with open(output_path, 'a', newline='') as f:
+        w = csv.writer(f)
+        for l in data:
+            title = l.get_text()
+            link = url_prefix + l.attrs["href"]
+            w.writerow([title, weight, link])
+    return
 
 # End of File

@@ -8,3 +8,5 @@ HEADERS = {
     'Connection': 'keep-alive',
     'TE': 'Trailers'
 }
+
+CSV_TITLE = ['Title', 'Weight', 'Link']

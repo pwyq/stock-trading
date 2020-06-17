@@ -43,13 +43,23 @@ def log_error(url, e):
     return
 
 
-def extract_web(url, class_tag):
+def extract_web_with_class_tag(url, class_tag):
     if url is None or class_tag is None:
         return None
     raw = simple_get(url)
     res = str(raw, 'utf-8')
     soup = BeautifulSoup(res, 'html.parser')
     list_links = soup.find_all(class_=class_tag)
+    return list_links
+
+
+def extract_web_with_attr(url, attr):
+    if url is None:
+        return None
+    raw = simple_get(url)
+    res = str(raw, 'utf-8')
+    soup = BeautifulSoup(res, 'html.parser')
+    list_links = soup.find_all(attr)
     return list_links
 
 
@@ -64,7 +74,10 @@ def write_to_csv(output_path, data, weight, url_prefix=None):
         w.writerow(const.CSV_TITLE)
         for l in data:
             title = l.get_text()
-            link = url_prefix + l.attrs["href"]
+            if "href" in l.attrs:
+                link = url_prefix + l.attrs["href"]
+            else:
+                link = ''
             w.writerow([title, weight, link])
     return
 
@@ -74,7 +87,10 @@ def append_to_csv(output_path, data, weight, url_prefix=None):
         w = csv.writer(f)
         for l in data:
             title = l.get_text()
-            link = url_prefix + l.attrs["href"]
+            if "href" in l.attrs:
+                link = url_prefix + l.attrs["href"]
+            else:
+                link = ''
             w.writerow([title, weight, link])
     return
 

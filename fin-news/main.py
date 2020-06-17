@@ -7,24 +7,33 @@ import constants as const
 def extract_bloomberg(path):
     # header article
     tag = 'single-story-module__headline-link'
-    raw_1 = ext.extract_web(const.URL_BLOOMBERG, tag)
+    raw_1 = ext.extract_web_with_class_tag(const.URL_BLOOMBERG, tag)
     ext.write_to_csv(path, raw_1, 0.9, const.URL_BLOOMBERG)
 
     # related header article 
     tag = 'single-story-module__related-story-link'
-    raw_2 = ext.extract_web(const.URL_BLOOMBERG, tag)
+    raw_2 = ext.extract_web_with_class_tag(const.URL_BLOOMBERG, tag)
     ext.append_to_csv(path, raw_2, 0.8, const.URL_BLOOMBERG)
 
     # non-header article
     tag = 'story-package-module__story__headline-link'
-    raw_3 = ext.extract_web(const.URL_BLOOMBERG, tag)
+    raw_3 = ext.extract_web_with_class_tag(const.URL_BLOOMBERG, tag)
     ext.append_to_csv(path, raw_3, 0.5, const.URL_BLOOMBERG)
 
 
 def extract_financial_times(path):
     tag = 'js-teaser-heading-link'
-    raw = ext.extract_web(const.URL_FT, tag)
+    raw = ext.extract_web_with_class_tag(const.URL_FT, tag)
     ext.write_to_csv(path, raw, 1, const.URL_FT)
+
+
+def extract_yahoo_finances(path):
+    attr_1 = "h3"
+    raw_1 = ext.extract_web_with_attr(const.URL_YAHOO, attr_1)
+    ext.write_to_csv(path, raw_1, 0.9, const.URL_YAHOO)
+    attr_2 = "h2"
+    raw_2 = ext.extract_web_with_attr(const.URL_YAHOO, attr_2)
+    ext.append_to_csv(path, raw_1, 0.8, const.URL_YAHOO)
 
 
 if __name__ == "__main__":
@@ -35,3 +44,8 @@ if __name__ == "__main__":
 
     output_path = "../data/" + "bloomberg-" + d + ".csv"
     extract_bloomberg(output_path)
+
+    output_path = "../data/" + "yahoo-" + d + ".csv"
+    extract_yahoo_finances(output_path)
+
+    # End of File

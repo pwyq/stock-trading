@@ -1,4 +1,12 @@
 To extract raw data from financial news websites.
 
+
+## Tools
+
+- [HTML formatter](https://www.freeformatter.com/html-formatter.html)
+
+## Links
 - [x] [Financial Times](https://www.ft.com)
-- [ ] [Bloomberg](https://www.bloomberg.com)
+- [x] [Bloomberg](https://www.bloomberg.com)
+- [x] [Yahoo Finance](https://finance.yahoo.com)
+- [ ] [Yahoo API](https://rapidapi.com/blog/how-to-use-the-yahoo-finance-api/)

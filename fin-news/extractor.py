@@ -18,7 +18,6 @@ def simple_get(url):
     """
     try:
         with closing(get(url, stream=True, headers=const.HEADERS)) as resp:
-        # with closing(get(url, stream=True, headers=HEADERS)) as resp:
             if is_good_response(resp) is True:
                 return resp.content
             else:
@@ -41,6 +40,7 @@ def is_good_response(resp):
 
 def log_error(url, e):
     print('[ERROR] Error during requests to {0}:\n{1}'.format(url, str(e)))
+    return
 
 
 def extract_web(url, class_tag):

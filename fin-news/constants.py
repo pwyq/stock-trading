@@ -10,3 +10,7 @@ HEADERS = {
 }
 
 CSV_TITLE = ['Title', 'Weight', 'Link']
+
+# URLs
+URL_FT = 'https://www.ft.com'
+URL_BLOOMBERG = 'https://www.bloomberg.com'

@@ -16,3 +16,4 @@ URL_FT = 'https://www.ft.com'
 URL_BLOOMBERG = 'https://www.bloomberg.com'
 ## note that Yahoo have different cite ca.finance.yahoo.com = Canada, de = german
 URL_YAHOO = 'https://finance.yahoo.com'
+URL_MARKETWATCH = 'https://www.marketwatch.com'

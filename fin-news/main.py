@@ -27,6 +27,12 @@ def extract_financial_times(path):
     ext.write_to_csv(path, raw, 1, const.URL_FT)
 
 
+def extract_marketwatch(path):
+    tag = 'link'
+    raw = ext.extract_web_with_class_tag(const.URL_MARKETWATCH, tag)
+    ext.write_to_csv_marketwatch(path, raw, 1)
+
+
 def extract_yahoo_finances(path):
     attr_1 = "h3"
     raw_1 = ext.extract_web_with_attr(const.URL_YAHOO, attr_1)
@@ -47,5 +53,8 @@ if __name__ == "__main__":
 
     output_path = "../data/" + "yahoo-" + d + ".csv"
     extract_yahoo_finances(output_path)
+
+    output_path = "../data/" + "marketwatch-" + d + ".csv"
+    extract_marketwatch(output_path)
 
     # End of File

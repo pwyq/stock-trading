@@ -14,10 +14,14 @@
 
 ## TODO
 
+- [ ] research existing NLP finance model
 - [ ] Extract Financial News
-	- [x] web scraping with Python
+	- [x] web scraping news title with Python
+	- [ ] web scraping news body with Python
     - [ ] Run script on remote server to auto scrape data every 4 hours
 - [ ] Analyze Financial News
+	- [ ] sentiment analysis on title
+	- [ ] sentiment analysis on article
 - [ ] Extract Stock price/info correspondingly
 - [ ] Analyze the trend of financial news vs. stock price
 

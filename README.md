@@ -16,6 +16,7 @@
 
 - [ ] Extract Financial News
 	- [x] web scraping with Python
+    - [ ] Run script on remote server to auto scrape data every 4 hours
 - [ ] Analyze Financial News
 - [ ] Extract Stock price/info correspondingly
 - [ ] Analyze the trend of financial news vs. stock price

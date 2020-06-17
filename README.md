@@ -15,11 +15,12 @@
 ## TODO
 
 - [ ] Extract Financial News
-	- [ ] web scraping with Python
+	- [x] web scraping with Python
 - [ ] Analyze Financial News
+- [ ] Extract Stock price/info correspondingly
+- [ ] Analyze the trend of financial news vs. stock price
 
 
-## Financial News Site
+### Extra
 
-- [Financial Times](https://www.ft.com)
-- [Bloomberg](https://www.bloomberg.com)
+- [ ] database?

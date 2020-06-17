@@ -12,23 +12,24 @@ def extract_web(url):
     return list_links
 
 
-def write_to_csv(prefix, list_links):
+def write_to_csv(list_links, output_path, url_prefix=None):
     d = date.today().strftime("%y-%m-%d")
 
-    file_name = "financial-times-" + d + ".csv"
+    file_name = output_path + "/" + "financial-times-" + d + ".csv"
     with open(file_name, 'w', newline='') as file:
         w = csv.writer(file, delimiter=',')
         w.writerow(['Title', 'Link'])
         for l in list_links:
             title = l.get_text()
-            link = prefix + l.attrs["href"]
+            link = url_prefix + l.attrs["href"]
             w.writerow([title, link])
     return
 
 if __name__ == "__main__":
     URL = 'https://www.ft.com'
+    output_path = "../data"
 
     raw = extract_web(URL)
-    write_to_csv(URL, raw)
+    write_to_csv(raw, output_path, URL)
 
     # End of File

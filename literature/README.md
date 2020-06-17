@@ -1,0 +1,4 @@
+- post: https://towardsdatascience.com/getting-rich-quick-with-machine-learning-and-stock-market-predictions-696802da94fe
+	- code: https://github.com/yacoubb/stock-trading-ml
+- post: https://towardsdatascience.com/how-to-use-machine-learning-to-possibly-become-a-millionaire-predicting-the-stock-market-33861916e9c5
+	- code: https://github.com/jerrytigerxu/Stock-Price-Prediction

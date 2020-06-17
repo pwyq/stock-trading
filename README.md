@@ -15,6 +15,8 @@
 ## TODO
 
 - [ ] research existing NLP finance model
+- [ ] Find historical data
+- [ ] Find historical news
 - [ ] Extract Financial News
 	- [x] web scraping news title with Python
 	- [ ] web scraping news body with Python

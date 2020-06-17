@@ -42,9 +42,21 @@ def is_good_response(resp):
 def log_error(url, e):
     print('[ERROR] Error during requests to {0}:\n{1}'.format(url, str(e)))
 
+
+def extract_web(url, class_tag):
+    if url is None or class_tag is None:
+        return None
+    raw = simple_get(url)
+    res = str(raw, 'utf-8')
+    soup = BeautifulSoup(res, 'html.parser')
+    list_links = soup.find_all(class_=class_tag)
+    return list_links
+
+
 # ********************************
 # Data output
 # ********************************
+
 
 def write_to_csv(output_path, data, weight, url_prefix=None):
     with open(output_path, 'w', newline='') as file:
@@ -56,6 +68,7 @@ def write_to_csv(output_path, data, weight, url_prefix=None):
             w.writerow([title, weight, link])
     return
 
+
 def append_to_csv(output_path, data, weight, url_prefix=None):
     with open(output_path, 'a', newline='') as f:
         w = csv.writer(f)
@@ -64,5 +77,6 @@ def append_to_csv(output_path, data, weight, url_prefix=None):
             link = url_prefix + l.attrs["href"]
             w.writerow([title, weight, link])
     return
+
 
 # End of File

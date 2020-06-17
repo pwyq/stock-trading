@@ -12,13 +12,13 @@ def simple_get(url):
     """
     try:
         with closing(get(url, stream=True)) as resp:
-            if is_good_response(resp):
+            if is_good_response(resp) is True:
                 return resp.content
             else:
                 return None
 
     except RequestException as e:
-        log_error('Error during requests to {0} : {1}'.format(url, str(e)))
+        log_error(url, e)
         return None
 
 
@@ -32,9 +32,7 @@ def is_good_response(resp):
             and content_type.find('html') > -1)
 
 
-def log_error(e):
-    print(e)
+def log_error(url, e):
+    print('[ERROR] Error during requests to {0}:\n{1}'.format(url, str(e)))
 
-
-#print(simple_get('https://www.ft.com/content/15a1cc68-4ab8-4acf-b230-7fe331adca33'))
-print(simple_get('https://www.ft.com'))
+# End of File

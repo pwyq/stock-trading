@@ -68,27 +68,29 @@ def extract_web_with_attr(url, attr):
 # ********************************
 
 
-def write_to_csv(output_path, data, weight, url_prefix=None):
+def write_to_csv(output_path, data, weight, timestamp, url_prefix=None):
     with open(output_path, 'w', newline='') as file:
         w = csv.writer(file, delimiter=',')
         w.writerow(const.CSV_TITLE)
         for l in data:
+            # message less than 5 words hardly contain useful info
+            if len(l.get_text().split()) <= 5:
+                continue
             # remove leading & trailing spaces
             title = l.get_text().strip()
             if "href" in l.attrs:
                 link = url_prefix + l.attrs["href"] if url_prefix is not None else l.attrs["href"]
             else:
                 link = ''
-            w.writerow([title, weight, link])
+            w.writerow([title, weight, timestamp, link])
     return
 
 
-def write_to_csv_marketwatch(output_path, data, weight, url_prefix=None):
+def write_to_csv_marketwatch(output_path, data, weight, timestamp, url_prefix=None):
     with open(output_path, 'w', newline='') as file:
         w = csv.writer(file, delimiter=',')
         w.writerow(const.CSV_TITLE)
         for l in data:
-            # this one has garbage data that less than 5
             if len(l.get_text().split()) <= 5:
                 continue
             title = l.get_text().strip()
@@ -96,20 +98,22 @@ def write_to_csv_marketwatch(output_path, data, weight, url_prefix=None):
                 link = url_prefix + l.attrs["href"] if url_prefix is not None else l.attrs["href"]
             else:
                 link = ''
-            w.writerow([title, weight, link])
+            w.writerow([title, weight, timestamp, link])
     return
 
 
-def append_to_csv(output_path, data, weight, url_prefix=None):
+def append_to_csv(output_path, data, weight, timestamp, url_prefix=None):
     with open(output_path, 'a', newline='') as f:
         w = csv.writer(f)
         for l in data:
+            if len(l.get_text().split()) <= 5:
+                continue
             title = l.get_text().strip()
             if "href" in l.attrs:
                 link = url_prefix + l.attrs["href"] if url_prefix is not None else l.attrs["href"]
             else:
                 link = ''
-            w.writerow([title, weight, link])
+            w.writerow([title, weight, timestamp, link])
     return
 
 

@@ -9,7 +9,7 @@ HEADERS = {
     'TE': 'Trailers'
 }
 
-CSV_TITLE = ['Title', 'Weight', 'Link']
+CSV_TITLE = ['Title', 'Weight', 'Timestamp', 'Link']
 
 # URLs
 URL_FT = 'https://www.ft.com'

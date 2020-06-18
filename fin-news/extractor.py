@@ -96,20 +96,4 @@ def write_to_csv(output_path, data, weight, timestamp, url_prefix=None):
     return
 
 
-def write_to_csv_marketwatch(output_path, data, weight, timestamp, url_prefix=None):
-    with open(output_path, 'w', newline='') as file:
-        w = csv.writer(file, delimiter=',')
-        w.writerow(const.CSV_TITLE)
-        for l in data:
-            if len(l.get_text().split()) <= 5:
-                continue
-            title = l.get_text().strip()
-            if "href" in l.attrs:
-                link = url_prefix + l.attrs["href"] if url_prefix is not None else l.attrs["href"]
-            else:
-                link = ''
-            w.writerow([title, weight, timestamp, link])
-    return
-
-
 # End of File

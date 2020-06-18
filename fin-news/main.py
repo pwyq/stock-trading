@@ -35,7 +35,7 @@ def extract_marketwatch(path):
     tag = 'link'
     ts = datetime.now().timestamp()
     raw = ext.extract_web_with_class_tag(const.URL_MARKETWATCH, tag)
-    ext.write_to_csv_marketwatch(path, raw, 1, ts)
+    ext.write_to_csv(path, raw, 1, ts)
 
 
 def extract_yahoo_finances(path):
@@ -57,16 +57,16 @@ def get_timestamp():
 if __name__ == "__main__":
     d = datetime.now().strftime("%y-%m-%d")
 
-    output_path = "../data/" + "financial-times-" + d + ".csv"
+    output_path = "../data/ft/" + "financial-times-" + d + ".csv"
     extract_financial_times(output_path)
 
-    output_path = "../data/" + "bloomberg-" + d + ".csv"
+    output_path = "../data/bloomberg/" + "bloomberg-" + d + ".csv"
     extract_bloomberg(output_path)
 
-    output_path = "../data/" + "yahoo-" + d + ".csv"
+    output_path = "../data/yahoo/" + "yahoo-" + d + ".csv"
     extract_yahoo_finances(output_path)
 
-    output_path = "../data/" + "marketwatch-" + d + ".csv"
+    output_path = "../data/marketwatch/" + "marketwatch-" + d + ".csv"
     extract_marketwatch(output_path)
 
     # End of File

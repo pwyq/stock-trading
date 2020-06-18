@@ -15,13 +15,13 @@ def extract_bloomberg(path):
     tag = 'single-story-module__related-story-link'
     ts = get_timestamp()
     raw_2 = ext.extract_web_with_class_tag(const.URL_BLOOMBERG, tag)
-    ext.append_to_csv(path, raw_2, 0.8, ts, const.URL_BLOOMBERG)
+    ext.write_to_csv(path, raw_2, 0.8, ts, const.URL_BLOOMBERG)
 
     # non-header article
     tag = 'story-package-module__story__headline-link'
     ts = get_timestamp()
     raw_3 = ext.extract_web_with_class_tag(const.URL_BLOOMBERG, tag)
-    ext.append_to_csv(path, raw_3, 0.5, ts, const.URL_BLOOMBERG)
+    ext.write_to_csv(path, raw_3, 0.5, ts, const.URL_BLOOMBERG)
 
 
 def extract_financial_times(path):
@@ -47,7 +47,7 @@ def extract_yahoo_finances(path):
     attr_2 = "h2"
     ts = get_timestamp()
     raw_2 = ext.extract_web_with_attr(const.URL_YAHOO, attr_2)
-    ext.append_to_csv(path, raw_1, 0.8, ts, const.URL_YAHOO)
+    ext.write_to_csv(path, raw_1, 0.8, ts, const.URL_YAHOO)
 
 
 def get_timestamp():
@@ -56,7 +56,7 @@ def get_timestamp():
 
 if __name__ == "__main__":
     d = datetime.now().strftime("%y-%m-%d")
-    
+
     output_path = "../data/" + "financial-times-" + d + ".csv"
     extract_financial_times(output_path)
 

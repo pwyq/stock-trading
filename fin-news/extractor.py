@@ -4,6 +4,7 @@ from contextlib import closing
 from bs4 import BeautifulSoup
 
 import csv
+import os.path
 import constants as const
 
 # ********************************
@@ -69,9 +70,18 @@ def extract_web_with_attr(url, attr):
 
 
 def write_to_csv(output_path, data, weight, timestamp, url_prefix=None):
-    with open(output_path, 'w', newline='') as file:
+
+    if os.path.isfile(output_path) is False:
+        mode = 'w'
+    else:
+        mode = 'a'
+
+    with open(output_path, mode, newline='') as file:
         w = csv.writer(file, delimiter=',')
-        w.writerow(const.CSV_TITLE)
+        if mode is 'w':
+            w.writerow(const.CSV_TITLE)
+        else:
+            pass
         for l in data:
             # message less than 5 words hardly contain useful info
             if len(l.get_text().split()) <= 5:
@@ -90,21 +100,6 @@ def write_to_csv_marketwatch(output_path, data, weight, timestamp, url_prefix=No
     with open(output_path, 'w', newline='') as file:
         w = csv.writer(file, delimiter=',')
         w.writerow(const.CSV_TITLE)
-        for l in data:
-            if len(l.get_text().split()) <= 5:
-                continue
-            title = l.get_text().strip()
-            if "href" in l.attrs:
-                link = url_prefix + l.attrs["href"] if url_prefix is not None else l.attrs["href"]
-            else:
-                link = ''
-            w.writerow([title, weight, timestamp, link])
-    return
-
-
-def append_to_csv(output_path, data, weight, timestamp, url_prefix=None):
-    with open(output_path, 'a', newline='') as f:
-        w = csv.writer(f)
         for l in data:
             if len(l.get_text().split()) <= 5:
                 continue

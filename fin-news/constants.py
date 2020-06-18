@@ -9,6 +9,9 @@ HEADERS = {
     'TE': 'Trailers'
 }
 
+PATH_CHROMEDRIVER = '/usr/bin/chromedriver'
+
+# outputs
 CSV_TITLE = ['Title', 'Weight', 'Timestamp', 'Link']
 
 # URLs

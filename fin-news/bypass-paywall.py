@@ -12,14 +12,12 @@ def get_html(url):
 
 def process_html_ft(output_path, html):
     soup = BeautifulSoup(html, 'html.parser')
-
     title = soup.find("meta", {"property":"og:title"})['content']
     desc = soup.find("meta", {"property":"og:description"})['content']
     pub_time = soup.find("meta", {"property":"article:published_time"})['content']
-
     body = soup.find(class_="article__content-body")
-    unwanted_tags = ['n-content-recommended--single-story', 'n-content-pullquote']
 
+    unwanted_tags = ['n-content-recommended--single-story', 'n-content-pullquote']
     for t in unwanted_tags:
         garbage = body.findAll(class_=t)
         for g in garbage:
@@ -38,20 +36,18 @@ def process_html_ft(output_path, html):
 
 
 if __name__ == '__main__':
-    chromedriver_path = '/usr/bin/chromedriver'
     ext_path = '/home/pwyq/github/stock-trading/third-parties/'
     ext_dir = ext_path + 'bypass-paywalls-chrome'
     ext_file = ext_path + 'paywall' # it will auto add filetype
 
-    shutil.make_archive(ext_file, 'zip', ext_dir)
-
+    shutil.make_archive(ext_file, 'zip', ext_dir) # requries zip as extention
     ext_file += '.zip'
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_extension(ext_file)
 
-    driver = webdriver.Chrome(executable_path=chromedriver_path, options=chrome_options)
+    driver = webdriver.Chrome(executable_path=const.PATH_CHROMEDRIVER, options=chrome_options)
 
-    # TODO: get url from other files
+    # TODO: get urls from other files
     url = 'https://www.ft.com/content/2226adc7-f897-4fa3-abdc-ba2ca2183cfc'
     # url2 = 'https://www.ft.com/content/1ac26225-c5dc-48fa-84bd-b61e1f4a3d94'
     

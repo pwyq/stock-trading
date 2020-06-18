@@ -15,7 +15,7 @@ To extract raw data from financial news websites.
 - [ ] [The Economist Finance & Economics](https://www.economist.com/finance-and-economics)
 - [x] [Financial Times](https://www.ft.com)
     - [x] FT body extract (bypassing paywall)
-    - [ ] FT body gets useful data
+    - [x] FT body gets useful data
 - [x] [Market watch](https://www.marketwatch.com)
 - [x] [Yahoo Finance](https://finance.yahoo.com)
 - [ ] [Yahoo API](https://rapidapi.com/blog/how-to-use-the-yahoo-finance-api)

@@ -28,6 +28,10 @@
 - [ ] Extract Stock price/info correspondingly
 - [ ] Analyze the trend of financial news vs. stock price
 
+## Long Term
+
+- [ ] consider Author's bias
+- [ ] consider textbody aside/quote etc
 
 ### Extra
 

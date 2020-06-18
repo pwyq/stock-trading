@@ -18,8 +18,9 @@
 - [ ] Find historical data
 - [ ] Find historical news
 - [ ] Extract Financial News
-	- [x] web scraping news title with Python
-	- [ ] web scraping news body with Python
+	- [x] web scraping news title
+	- [ ] web scraping news body
+	- [ ] web scraping news body bypassing paywall
     - [ ] Run script on remote server to auto scrape data every 4 hours
 - [ ] Analyze Financial News
 	- [ ] sentiment analysis on title

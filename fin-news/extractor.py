@@ -23,7 +23,6 @@ def simple_get(url):
                 return resp.content
             else:
                 return None
-
     except RequestException as e:
         log_error(url, e)
         return None
@@ -90,6 +89,9 @@ def write_to_csv(output_path, data, weight, timestamp, url_prefix=None):
             title = l.get_text().strip()
             if "href" in l.attrs:
                 link = url_prefix + l.attrs["href"] if url_prefix is not None else l.attrs["href"]
+                print(simple_get(link))
+                print(link)
+                break
             else:
                 link = ''
             w.writerow([title, weight, timestamp, link])

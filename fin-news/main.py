@@ -60,13 +60,13 @@ if __name__ == "__main__":
     output_path = "../data/ft/" + "financial-times-" + d + ".csv"
     extract_financial_times(output_path)
 
-    output_path = "../data/bloomberg/" + "bloomberg-" + d + ".csv"
-    extract_bloomberg(output_path)
+    # output_path = "../data/bloomberg/" + "bloomberg-" + d + ".csv"
+    # extract_bloomberg(output_path)
 
-    output_path = "../data/yahoo/" + "yahoo-" + d + ".csv"
-    extract_yahoo_finances(output_path)
+    # output_path = "../data/yahoo/" + "yahoo-" + d + ".csv"
+    # extract_yahoo_finances(output_path)
 
-    output_path = "../data/marketwatch/" + "marketwatch-" + d + ".csv"
-    extract_marketwatch(output_path)
+    # output_path = "../data/marketwatch/" + "marketwatch-" + d + ".csv"
+    # extract_marketwatch(output_path)
 
     # End of File
